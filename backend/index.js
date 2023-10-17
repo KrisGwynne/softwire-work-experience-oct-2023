@@ -6,9 +6,12 @@ const app = express();
 
 app.use(cors())
 
-app.use('/', router);
+// API endpoints available at <siteUrl>/api/<endpoint>
+app.use('/api', router);
+
+// Handle unknown urls
 app.use('*', (req, res) => {
-    res.send('Resource not found!');
+    res.status(404).json({ message: 'Unknown endpoint'});
 });
 
 const port = process.env.PORT || 3000;

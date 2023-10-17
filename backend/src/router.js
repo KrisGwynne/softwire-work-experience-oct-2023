@@ -3,6 +3,6 @@ import { exampleAction } from "./controllers/example.js";
 
 const router = new RouterBuilder();
 
-router.addGetEndpoint('/api/example', exampleAction);
+router.addGetEndpoint('/example', exampleAction);
 
 export default router.router;
