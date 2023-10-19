@@ -2,21 +2,20 @@
 
 ## Contents
 <!-- TOC -->
-* [Softwire Work Experience - Oct 2023](#softwire-work-experience---oct-2023)
-  * [Week Schedule](#week-schedule)
-  * [Useful Links](#useful-links)
-    * [Project Resources](#project-resources)
-    * [Useful HTML/CSS/JavaScript Guides](#useful-htmlcssjavascript-guides)
-  * [Technical Overview](#technical-overview)
-    * [Frontend](#frontend)
-    * [Backend](#backend)
-  * [Running Locally](#running-locally)
-    * [Frontend](#frontend-1)
-    * [Backend](#backend-1)
-  * [How to Contribute Code](#how-to-contribute-code)
-    * [Initial Repository Setup](#initial-repository-setup)
-    * [Working on a Feature](#working-on-a-feature)
-    * [Requesting a Review](#requesting-a-review)
+* [Week Schedule](#week-schedule)
+* [Useful Links](#useful-links)
+  * [Project Resources](#project-resources)
+  * [Useful HTML/CSS/JavaScript Guides](#useful-htmlcssjavascript-guides)
+* [Technical Overview](#technical-overview)
+  * [Frontend](#frontend)
+  * [Backend](#backend)
+* [Running Locally](#running-locally)
+  * [Frontend](#frontend-1)
+  * [Backend](#backend-1)
+* [How to Contribute Code](#how-to-contribute-code)
+  * [Initial Repository Setup](#initial-repository-setup)
+  * [Working on a Feature](#working-on-a-feature)
+  * [Requesting a Review](#requesting-a-review)
 <!-- TOC -->
 
 ## Week Schedule
