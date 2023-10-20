@@ -25,10 +25,10 @@
 | Monday    |                                                                                |
 | 10:00     | Arrival/tour                                                                   |
 | 10:30     | Introductions and Setup                                                        |
-| 11:00     | Feature specification and Trello Setup                                         |
+| 11:30     | Feature specification and Trello Setup                                         |
+| 12:00     | Presentation: Git and Github                                                   |
 | 12:30     | Lunch break                                                                    |
-| 13:30     | Presentation: Git and Github                                                   |
-| 14:00     | Code development                                                               |
+| 13:30     | Code development                                                               |
 | 16:00     | End of Day                                                                     |
 | Tuesday   |                                                                                |
 | 10:00     | Standup                                                                        |
