@@ -1,50 +1,73 @@
-export const iPiece= [
+export const iPiece= {
+    color: "cyan",
+    array: [
     [1, 0, 0, 0],
     [1, 0, 0, 0],
     [1, 0, 0, 0],
     [1, 0, 0, 0]
+    ]
 
-];
+}
 
-export const jPiece = [
+export const jPiece = {
+    color: "blue",
+    array: [
     [0, 1, 0 ,0],
     [0, 1, 0 ,0],
     [1, 1, 0, 0],
     [0, 0, 0, 0]
-]
+    ]
+}
 
-export const lPiece = [
-    [1, 0, 0, 0],
-    [1, 0, 0, 0],
-    [1, 1, 0, 0],
-    [0, 0, 0, 0]
+export const lPiece = {
+    color: "orange",
+    array: [
+        [1, 0, 0, 0],
+        [1, 0, 0, 0],
+        [1, 1, 0, 0],
+        [0, 0, 0, 0]
+    ]
 
-]
 
-export const oPiece = [
-    [1, 1, 0, 0],
-    [1, 1, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-]
+}
 
-export const zPiece = [
-    [1, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-]
+export const oPiece = {
+    color: "yellow",
+    array: [
+        [1, 1, 0, 0],
+        [1, 1, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ]
+}
 
-export const tPiece = [
-    [0, 1, 0, 0],
-    [1, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-]
+export const zPiece = {
+    color: 'red',
+    array: [
+        [1, 1, 0, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ]
+}
 
-export const sPiece = [
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-]
+export const tPiece = {
+    color: 'purple',
+    array: [
+        [0, 1, 0, 0],
+        [1, 1, 1, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ]
+}
+
+
+export const sPiece = {
+    color: 'green',
+    array: [
+        [0, 1, 1, 0],
+        [1, 1, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ]
+}
