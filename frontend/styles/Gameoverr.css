@@ -1,12 +1,101 @@
+body {
+    background-image: url( "../Images/LoserScreen.jpg");
+    background-size: cover; /* The image will cover the entire body element */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional: Prevents the image from scrolling with the content */
+}
+
+
+
 .object {
-    width: 200px;
-    height: 200px;
-    border: 3px solid rgb(228, 19, 15);
+    width: 500px;
+    height: 500px;
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: 25%;
+    position: absolute;
+    bottom: -515px;
+    right: 43%;
+    scale: 1.2;
+}
+
+#InnerText {
+    margin: 0;
+    padding-left: 35%;
+    text-decoration: underline;
+    padding-top: 5%;
+    font-family: fantasy;
 }
 
 .shape {
-     width: 200px;
-     height: 200px;
-     background-color: darkblue;
+    width: 500px;
+    height: 500px;
+    background-color: rgb(91, 91, 91);
+    border-radius: 15px;
+    position: relative;
+    
+}
+#Home {
+    padding: 15px 32px;
+    margin: 0;
+    margin-top: 10%;
+    margin-left: 3%;
+    border-radius: 10px;
+    font-family: fantasy;
+    
+}
+
+#Retry {
+    padding: 15px 32px;
+    margin: 0;
+    margin-top: 15%;
+    margin-left: 27%;
+    border-radius: 10px;
+    font-family: fantasy;
+    
+}
+
+.innerObject {
+    width: 300px;
+    height: 300px;
+    border: 5px solid rgb(255, 255, 255);
+    margin-left: 17%;
+    margin-top: 5%;
+    position: relative;
+    border-radius: 20px;
+    
+
+}
+
+.innerShape {
+    width: 300px;
+    height: 300px;
+    background-color: hsl(0, 0%, 20%);
+    padding: 0;
+    margin: 0;
+    position: relative;
+    border-radius: 12px;
+    z-index: 1;
+
+}
+
+.HighScores {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    margin: 9%;
+    background-color: hsl(0, 0%, 20%);
+    padding: 10px;
+    z-index: 2;
+    margin: 0;
+}
+
+#scores {
+    list-style: none;
+    font-family: fantasy;
+    font-size: 150%;
+    margin-left: 45px;
+    color: darkgray;
+
 
 }
