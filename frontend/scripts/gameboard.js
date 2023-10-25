@@ -31,7 +31,7 @@ function drawTile(row,col){
     ctx.fillStyle = "red";
     for(let x = 0; x < 10; x++ ){
         for(let y = 0; y < 20; y++){
-            if (x === Number(row) && y === Number(col)) {
+            if (y === Number(row) && x === Number(col)) {
                 ctx.fillRect(x*60+1, y*60+1, 58, 58)
                 
             }
@@ -50,7 +50,7 @@ function drawPiece(piece) {
         }
         for (const colIndex in row) {
             if (row[colIndex] === 1) {
-                drawTile(colIndex, rowIndex)
+                drawTile(rowIndex,colIndex)
             
             }
         }
