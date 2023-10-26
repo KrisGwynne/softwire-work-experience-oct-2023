@@ -35,7 +35,7 @@ function drawTile(row,col){
 
 function drawRandomPiece() {
     const pieces = [iPiece, jPiece, lPiece, oPiece, zPiece, tPiece, sPiece]
-    const RandomNum = Math.floor(Math.random() * 7)
+    const RandomNum = Math.floor(Math.random() * pieces.length)
     return pieces[RandomNum]
     //console.log(pieces[RandomNum])
      
@@ -65,5 +65,3 @@ function drawPiece(piece) {
 //drawRandomPiece()
 
 drawPiece(drawRandomPiece())
-
-drawPiece(drawRandomPiece(),)
