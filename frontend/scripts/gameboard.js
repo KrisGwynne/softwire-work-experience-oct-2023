@@ -57,23 +57,24 @@ function drawPiece(piece) {
 
 }
 
+function emptyGrid(){
+    console.log()
+    console.log()
+    ctx.fillStyle = "white";
+    for(let x = 0; x < 10; x++ ){
+        for(let y = 0; y < 20; y++){
+            ctx.fillRect(x*60+1, y*60+1, 58, 58)
+                
+            
+            
+        }    
+    }
+}
 
 window.addEventListener("keydown", function name(event) {
     if ("ArrowRight" === event.key )  {
         column = column + 1 ;
-        function emptyGrid(){
-            console.log()
-            console.log()
-            ctx.fillStyle = "white";
-            for(let x = 0; x < 10; x++ ){
-                for(let y = 0; y < 20; y++){
-                    ctx.fillRect(x*60+1, y*60+1, 58, 58)
-                        
-                    
-                    
-                }    
-            }
-        }
+       
         emptyGrid()
        
         drawPiece(lPiece)
@@ -82,19 +83,7 @@ window.addEventListener("keydown", function name(event) {
     }
     if ("ArrowLeft" === event.key )  {
         column = column - 1 ;
-        function emptyGrid(){
-            console.log()
-            console.log()
-            ctx.fillStyle = "white";
-            for(let x = 0; x < 10; x++ ){
-                for(let y = 0; y < 20; y++){
-                    ctx.fillRect(x*60+1, y*60+1, 58, 58)
-                        
-                    
-                    
-                }    
-            }
-        }
+        
         emptyGrid()
         drawPiece(lPiece)
         
