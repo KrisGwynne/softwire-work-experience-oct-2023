@@ -73,7 +73,7 @@ function isMoveValid(newColumn) {
         for (let coli = 0; coli < row.length; coli++) {
             const element = row[coli];
             console.log(newColumn + coli)
-            if (element === 1 && newColumn + coli == 10 || newColumn + coli == -1) {
+            if (element === 1 && newColumn + coli == 10 || newColumn + coli == -1) { // cheeky little or value instead of another if statement ;)
                 return false
             }
 
