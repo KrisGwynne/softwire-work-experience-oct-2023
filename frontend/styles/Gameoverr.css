@@ -16,7 +16,7 @@ body {
     position: absolute;
     bottom: -515px;
     right: 43%;
-    scale: 1.2;
+    scale: 128%;
 }
 
 #InnerText {
@@ -28,7 +28,7 @@ body {
 }
 
 .shape {
-    width: 500px;
+    width: 20;
     height: 500px;
     background-color: rgb(91, 91, 91);
     border-radius: 15px;
