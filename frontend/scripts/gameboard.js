@@ -41,16 +41,15 @@ function drawTile(row,col){
     }
 }
 
+let column = 0
+
 let x = drawPiece(lPiece)
 function drawPiece(piece) {
     for (const rowIndex in piece){
         const row = piece[rowIndex]
-        if (piece === 1) {
-            ctx.fillRect(x*60+1, y*60+1, 58, 58)
-        }
         for (const colIndex in row) {
             if (row[colIndex] === 1) {
-                drawTile(rowIndex,colIndex)
+                drawTile(Number(rowIndex),Number(colIndex) + column)
             
             }
         }
@@ -59,3 +58,45 @@ function drawPiece(piece) {
 }
 
 
+window.addEventListener("keydown", function name(event) {
+    if ("ArrowRight" === event.key )  {
+        column = column + 1 ;
+        function emptyGrid(){
+            console.log()
+            console.log()
+            ctx.fillStyle = "white";
+            for(let x = 0; x < 10; x++ ){
+                for(let y = 0; y < 20; y++){
+                    ctx.fillRect(x*60+1, y*60+1, 58, 58)
+                        
+                    
+                    
+                }    
+            }
+        }
+        emptyGrid()
+       
+        drawPiece(lPiece)
+        
+
+    }
+    if ("ArrowLeft" === event.key )  {
+        column = column - 1 ;
+        function emptyGrid(){
+            console.log()
+            console.log()
+            ctx.fillStyle = "white";
+            for(let x = 0; x < 10; x++ ){
+                for(let y = 0; y < 20; y++){
+                    ctx.fillRect(x*60+1, y*60+1, 58, 58)
+                        
+                    
+                    
+                }    
+            }
+        }
+        emptyGrid()
+        drawPiece(lPiece)
+        
+    }
+})
