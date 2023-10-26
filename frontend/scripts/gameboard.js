@@ -69,7 +69,6 @@ function drawPiece(piece) {
             }
         }
     }
-
 }
 
 
@@ -113,3 +112,18 @@ window.addEventListener("keydown", function name(event) {
 //rahul is a ledgend too
 
 drawPiece(piece)
+
+
+function arrayRotate(arr,reverse){
+    return arr[0].map((_, index) =>arr.map(row => row[index]).reverse());
+}
+
+
+window.addEventListener("keydown", function name(event) {
+    if ("ArrowUp" === event.key )
+        piece.array = arrayRotate(piece.array)
+        emptyGrid()
+        drawPiece(piece)
+    }
+
+)
