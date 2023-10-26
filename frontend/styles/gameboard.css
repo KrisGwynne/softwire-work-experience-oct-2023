@@ -1,0 +1,17 @@
+
+body {
+    background-image: url(../Assets/800px_COLOURBOX8026395.jpg);
+}
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+#myCanvas {
+    border-radius: 25px;
+    background: #FFFFFF;
+    padding: 20px;
+    width: 600px;
+    height: 1200px;
+    
+  }
+
+  

@@ -1,0 +1,34 @@
+body {
+    background-image: url(../Assets/Tetris-game-v2.png);
+}
+img {
+    max-width: 100%;
+    height: auto;
+  }
+
+h1 {text-align: center;}
+li {
+    text-align: center;
+        list-style-type: none;
+}
+#SoftwireLogo {
+    border-radius: 25px;
+    background: url(../Assets/608b03d23423269caffb914c_Softwire_CompanyLogo.jpeg);
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+  }
+
+#container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+#invisible-box {
+    width: 500px;
+}
+
+
+

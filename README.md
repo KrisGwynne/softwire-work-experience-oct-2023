@@ -85,7 +85,7 @@
 | HTTP Response Codes (we'll probably only need 200, 400, 404 and 500) | [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)                                      |
 
 
-## Technical Overview
+## Technical Overview 
 
 The codebase has two components: frontend and backend. The `main` branch of the repository is set to run on Vercel 
 (a cloud platform). I've set this all up for you so you don't need to worry about how this hosting works, but I'll 
