@@ -1,4 +1,4 @@
-import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece } from "./pieces.js";
+import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece } from "./pieces.js";
 
 
 
@@ -26,14 +26,14 @@ for (let i = 0; i<21; i++){
 }
 
 function drawTile(row,col){
-    console.log('row', row)
-    console.log('col', col)
     ctx.fillRect(Number(col)*60+1, Number(row)*60+1, 58, 58)
+
 }
 
 function drawRandomPiece() {
     const pieces = [iPiece, jPiece, lPiece, oPiece, zPiece, tPiece, sPiece]
     const RandomNum = Math.floor(Math.random() * pieces.length)
+    // return testPiece;
     return pieces[RandomNum]
     //console.log(pieces[RandomNum])
      
@@ -41,15 +41,15 @@ function drawRandomPiece() {
 
 let column = 0;
 let piece = drawRandomPiece();
+
 function drawPiece(piece) {
     ctx.fillStyle = piece.color
     const array = piece.array;
-    console.log(piece.color)
     for (const rowIndex in array){
         const row = array[rowIndex]
         for (const colIndex in row) {
             if (row[colIndex] === 1) {
-                drawTile(Number(rowIndex),Number(colIndex) + column)
+                drawTile(Number(rowIndex),Number(colIndex) + column) 
             
             }
         }
@@ -57,22 +57,36 @@ function drawPiece(piece) {
 
 }
 
+
 function emptyGrid(){
-    console.log()
-    console.log()
     ctx.fillStyle = "white";
     for(let x = 0; x < 10; x++ ){
         for(let y = 0; y < 20; y++){
-            ctx.fillRect(x*60+1, y*60+1, 58, 58)
-                
-            
-            
+            ctx.fillRect(x*60+1, y*60+1, 58, 58)   
         }    
     }
 }
 
+function isMoveValid(newColumn) {
+    for (let rowi = 0; rowi < piece.array.length; rowi++) {
+        const row = piece.array[rowi];
+        for (let coli = 0; coli < row.length; coli++) {
+            const element = row[coli];
+            console.log(newColumn + coli)
+            if (element === 1 && newColumn + coli == 10 || newColumn + coli == -1) {
+                return false
+            }
+
+            
+
+
+        }
+    }
+    return true
+}
+
 window.addEventListener("keydown", function name(event) {
-    if ("ArrowRight" === event.key )  {
+    if ("ArrowRight" === event.key && isMoveValid(column + 1))  {
         column = column + 1 ;
        
         emptyGrid()
@@ -81,7 +95,7 @@ window.addEventListener("keydown", function name(event) {
         
 
     }
-    if ("ArrowLeft" === event.key )  {
+    if ("ArrowLeft" === event.key && isMoveValid(column - 1) )  {
         column = column - 1 ;
         
         emptyGrid()
@@ -92,4 +106,51 @@ window.addEventListener("keydown", function name(event) {
 
 //rahul is a ledgend too
 
+
 drawPiece(piece)
+
+// function isMoveValid(piece, columnOffset, rowOffset = 0) {
+//     const array = piece.array;
+
+//     for (const rowIndex in array) {
+//         const row = array[rowIndex];
+//         for (const colIndex in row) {
+//             if (
+//                 row[colIndex] === 1 &&
+//                 (Number(colIndex) + columnOffset < 0 ||
+//                  Number(colIndex) + columnOffset >= 10 ||
+//                  Number(rowIndex) + rowOffset >= 20)
+//             ) {
+//                 return false; // Collision with gameboard boundary
+//             }
+//         }
+//     }
+
+//     return true; // Valid move
+// }
+// window.addEventListener("keydown", function(event) {
+//     if ("ArrowRight" === event.key && isMoveValid(piece, column + 1)) {
+//         column = column + 1;
+//     }
+//     if ("ArrowLeft" === event.key && isMoveValid(piece, column - 1)) {
+//         column = column - 1;
+//     }
+//     if ("ArrowDown" === event.key && isMoveValid(piece, column, 1)) {
+//         // Move down faster
+//         // ...
+//     }
+//     if ("ArrowUp" === event.key) {
+//         // Rotate the piece
+//         const rotatedPiece = rotateArray(piece.array);
+//         if (isMoveValid({ array: rotatedPiece, color: piece.color }, column)) {
+//             piece.array = rotatedPiece;
+//         }
+//     }
+
+//     // Clear the canvas and draw the updated piece
+//     emptyGrid();
+//     drawPiece(piece);
+// });
+
+
+
