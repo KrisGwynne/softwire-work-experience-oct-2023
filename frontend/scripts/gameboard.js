@@ -28,9 +28,7 @@ for (let i = 0; i<21; i++){
 function drawTile(row,col){
     console.log('row', row)
     console.log('col', col)
-
     ctx.fillRect(Number(col)*60+1, Number(row)*60+1, 58, 58)
-
 }
 
 function drawRandomPiece() {
@@ -41,9 +39,8 @@ function drawRandomPiece() {
      
 }
 
-
-
-
+let column = 0;
+let piece = drawRandomPiece();
 function drawPiece(piece) {
     ctx.fillStyle = piece.color
     const array = piece.array;
@@ -52,7 +49,7 @@ function drawPiece(piece) {
         const row = array[rowIndex]
         for (const colIndex in row) {
             if (row[colIndex] === 1) {
-                drawTile(rowIndex,colIndex) 
+                drawTile(Number(rowIndex),Number(colIndex) + column)
             
             }
         }
@@ -60,8 +57,39 @@ function drawPiece(piece) {
 
 }
 
+function emptyGrid(){
+    console.log()
+    console.log()
+    ctx.fillStyle = "white";
+    for(let x = 0; x < 10; x++ ){
+        for(let y = 0; y < 20; y++){
+            ctx.fillRect(x*60+1, y*60+1, 58, 58)
+                
+            
+            
+        }    
+    }
+}
+
+window.addEventListener("keydown", function name(event) {
+    if ("ArrowRight" === event.key )  {
+        column = column + 1 ;
+       
+        emptyGrid()
+       
+        drawPiece(piece)
+        
+
+    }
+    if ("ArrowLeft" === event.key )  {
+        column = column - 1 ;
+        
+        emptyGrid()
+        drawPiece(piece)
+        
+    }
+})
+
 //rahul is a ledgend too
 
-//drawRandomPiece()
-
-drawPiece(drawRandomPiece())
+drawPiece(piece)
