@@ -37,11 +37,18 @@ function drawTile(row,col){
             }
             
             
-        }    
+        }   
     }
 }
 
-let x = drawPiece(oPiece)
+function drawRandomPiece() {
+    const RandomNum = Math.floor(Math.random() * 7)
+    if (RandomNum == 1 ) {
+        return iPiece
+    }
+    if
+
+}
 
 
 function drawPiece(piece) {
@@ -52,10 +59,12 @@ function drawPiece(piece) {
         const row = array[rowIndex]
         for (const colIndex in row) {
             if (row[colIndex] === 1) {
-                drawTile(rowIndex,colIndex)
+                drawTile(rowIndex,colIndex) 
             
             }
         }
     }
 
 }
+
+//rahul is a ledgend too
