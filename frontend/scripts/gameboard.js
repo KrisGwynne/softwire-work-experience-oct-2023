@@ -29,26 +29,19 @@ function drawTile(row,col){
     console.log('row', row)
     console.log('col', col)
 
-    for(let x = 0; x < 10; x++ ){
-        for(let y = 0; y < 20; y++){
-            if (y === Number(row) && x === Number(col)) {
-                ctx.fillRect(x*60+1, y*60+1, 58, 58)
-                
-            }
-            
-            
-        }   
-    }
+    ctx.fillRect(Number(col)*60+1, Number(row)*60+1, 58, 58)
+
 }
 
 function drawRandomPiece() {
+    const pieces = [iPiece, jPiece, lPiece, oPiece, zPiece, tPiece, sPiece]
     const RandomNum = Math.floor(Math.random() * 7)
-    if (RandomNum == 1 ) {
-        return iPiece
-    }
-    if
-
+    return pieces[RandomNum]
+    //console.log(pieces[RandomNum])
+     
 }
+
+
 
 
 function drawPiece(piece) {
@@ -68,3 +61,9 @@ function drawPiece(piece) {
 }
 
 //rahul is a ledgend too
+
+//drawRandomPiece()
+
+drawPiece(drawRandomPiece())
+
+drawPiece(drawRandomPiece(),)
