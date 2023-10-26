@@ -1,4 +1,4 @@
-import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece } from "./pieces.js";
+import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece } from "./pieces.js";
 
 
 
@@ -30,7 +30,7 @@ function drawTile(row,col){
     console.log('col', col)
     ctx.fillRect(Number(col)*60+1, Number(row)*60+1, 58, 58)
 }
-
+//Random Piece Generator
 function drawRandomPiece() {
     const pieces = [iPiece, jPiece, lPiece, oPiece, zPiece, tPiece, sPiece]
     const RandomNum = Math.floor(Math.random() * pieces.length)
@@ -38,9 +38,24 @@ function drawRandomPiece() {
     //console.log(pieces[RandomNum])
      
 }
+let theRow = 0;
+// moves the block down every second
+function increaseTheRow() {
+    theRow = theRow + 1;
+    emptyGrid()
+    drawPiece(piece)
+    if (theRow > 19) {
+      theRow = 0;
+    }
+    console.log("theRow:", theRow);
+  }
+
+  // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
+const intervalId = setInterval(increaseTheRow, 1000);
 
 let column = 0;
 let piece = drawRandomPiece();
+// draws the piece again
 function drawPiece(piece) {
     ctx.fillStyle = piece.color
     const array = piece.array;
@@ -49,13 +64,17 @@ function drawPiece(piece) {
         const row = array[rowIndex]
         for (const colIndex in row) {
             if (row[colIndex] === 1) {
-                drawTile(Number(rowIndex),Number(colIndex) + column)
+                drawTile(Number(rowIndex) + theRow ,Number(colIndex)+ column)
             
             }
         }
     }
 }
 
+
+
+
+// Empties the entire grid
 function emptyGrid(){
     console.log()
     console.log()
@@ -75,7 +94,6 @@ window.addEventListener("keydown", function name(event) {
         column = column + 1 ;
        
         emptyGrid()
-       
         drawPiece(piece)
         
 
@@ -89,6 +107,8 @@ window.addEventListener("keydown", function name(event) {
     }
 })
 
+
+
 //rahul is a ledgend too
 
 drawPiece(piece)
@@ -100,7 +120,7 @@ function arrayRotate(arr,reverse){
 
 
 window.addEventListener("keydown", function name(event) {
-    if ("ArrowUp" === event.key )  
+    if ("ArrowUp" === event.key )
         piece.array = arrayRotate(piece.array)
         emptyGrid()
         drawPiece(piece)

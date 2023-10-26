@@ -71,3 +71,15 @@ export const sPiece = {
         [0, 0, 0, 0]
     ]
 }
+
+
+export const testPiece = {
+    color: 'green',
+    array: [
+        [1, 1, 1, 1],
+        [1, 1, 1, 1],
+        [1, 1, 1, 1],
+        [1, 1, 1, 1],
+
+    ]
+}
