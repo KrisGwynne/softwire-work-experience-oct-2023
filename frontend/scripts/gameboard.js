@@ -151,13 +151,9 @@ function emptyNextGrid(){
         for(let y = 0; y < 20; y++){
             npc_c.fillStyle = "white";
             npc_c.fillRect(x*60+1, y*60+1, 58, 58)
-            if (grid.array[y][x] !== 0) {
-                npc_c.fillStyle = grid.array[y][x];
-                npc_c.fillRect(x*60+1, y*60+1, 58, 58)
             }
         }
     }
-}
 
 function increaseTheRow() {
     //totalGrid[i] = gridRow + gridColumn
