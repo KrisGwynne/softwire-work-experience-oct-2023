@@ -83,6 +83,10 @@ window.addEventListener("keydown", function name(event) {
     if ("ArrowUp" === event.key ) {
         piece.array = arrayRotate(piece.array)
     }
+
+    if ("ArrowDown" === event.key ) {
+        gridRow = gridRow + 1;
+    }
     emptyGrid()
     drawPiece(piece)
 })
