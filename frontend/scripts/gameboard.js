@@ -160,6 +160,25 @@ function emptyNextGrid(){
 
 var intervalId = setInterval(increaseTheRow, timeInterval);
 
+function checkForCompleteRow() {
+    const fullRows = [];
+    console.log(fullRows)
+    for (let i = 0; i < grid.array.length; i++) {
+        const row = grid.array[i];
+        if (row.every((col) => col !== 0)) {
+            fullRows.push(i);
+        }
+    }
+    console.log(fullRows)
+
+    for (let i = 0; i < fullRows.length; i++) {
+        const fullRowIndex = fullRows[i];
+        grid.array.splice(fullRowIndex)
+        grid.array.unshift(Array(10).fill(0))
+        
+    }
+}
+
 function increaseTheRow() {
     //totalGrid[i] = gridRow + gridColumn
     if (isMoveValid(gridRow + 1, gridColumn)){
@@ -177,6 +196,7 @@ function increaseTheRow() {
                 }
             }
         }
+        checkForCompleteRow()
         gridColumn = 3;
         gridRow = -1;
         piece = nextPiece
