@@ -108,8 +108,7 @@ function isMoveValid(newRow, newColumn) {
         for (let coli = 0; coli < row.length; coli++) {
             const element = row[coli];
             if (element === 1 && newColumn + coli === 10 ) { // cheeky little or value instead of another if statement ;)
-
-                    return false
+                return false
             }
             if (element === 1 && newColumn + coli === -1) {
                 return false
@@ -140,7 +139,7 @@ window.addEventListener("keydown", function name(event )  {
         piece.array = arrayRotate(piece.array)
     }
 
-    if ("ArrowDown" === event.key ) {
+    if ("ArrowDown" === event.key  && isMoveValid(gridRow + 1, gridColumn )) {
         gridRow = gridRow + 1;
     }
     emptyGrid()
@@ -148,6 +147,15 @@ window.addEventListener("keydown", function name(event )  {
 })
 
 //rahul is a ledgend too
+
+function emptyNextGrid(){
+    for(let x = 0; x < 10; x++ ){
+        for(let y = 0; y < 20; y++){
+            npc_c.fillStyle = "white";
+            npc_c.fillRect(x*60+1, y*60+1, 58, 58)
+            }
+        }
+    }
 
 function increaseTheRow() {
     //totalGrid[i] = gridRow + gridColumn
@@ -172,7 +180,10 @@ function increaseTheRow() {
         }
         gridColumn = 3;
         gridRow = -1;
-        piece = getRandomPiece()
+        piece = nextPiece
+        nextPiece = getRandomPiece()
+        emptyNextGrid()
+        drawNextPiece()
     }
 }
 
