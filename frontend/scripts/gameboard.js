@@ -73,7 +73,7 @@ function isMoveValid(newColumn) {
         for (let coli = 0; coli < row.length; coli++) {
             const element = row[coli];
             console.log(newColumn + coli)
-            if (element === 1 && newColumn + coli == 10 || newColumn + coli == -1) { // cheeky little or value instead of another if statement ;)
+            if (element === 1 && newColumn + coli == 10 || element === 1 && newColumn + coli == -1) { // cheeky little or value instead of another if statement ;)
                 return false
             }
 
@@ -108,49 +108,6 @@ window.addEventListener("keydown", function name(event) {
 
 
 drawPiece(piece)
-
-// function isMoveValid(piece, columnOffset, rowOffset = 0) {
-//     const array = piece.array;
-
-//     for (const rowIndex in array) {
-//         const row = array[rowIndex];
-//         for (const colIndex in row) {
-//             if (
-//                 row[colIndex] === 1 &&
-//                 (Number(colIndex) + columnOffset < 0 ||
-//                  Number(colIndex) + columnOffset >= 10 ||
-//                  Number(rowIndex) + rowOffset >= 20)
-//             ) {
-//                 return false; // Collision with gameboard boundary
-//             }
-//         }
-//     }
-
-//     return true; // Valid move
-// }
-// window.addEventListener("keydown", function(event) {
-//     if ("ArrowRight" === event.key && isMoveValid(piece, column + 1)) {
-//         column = column + 1;
-//     }
-//     if ("ArrowLeft" === event.key && isMoveValid(piece, column - 1)) {
-//         column = column - 1;
-//     }
-//     if ("ArrowDown" === event.key && isMoveValid(piece, column, 1)) {
-//         // Move down faster
-//         // ...
-//     }
-//     if ("ArrowUp" === event.key) {
-//         // Rotate the piece
-//         const rotatedPiece = rotateArray(piece.array);
-//         if (isMoveValid({ array: rotatedPiece, color: piece.color }, column)) {
-//             piece.array = rotatedPiece;
-//         }
-//     }
-
-//     // Clear the canvas and draw the updated piece
-//     emptyGrid();
-//     drawPiece(piece);
-// });
 
 
 
