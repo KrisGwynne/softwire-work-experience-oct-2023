@@ -128,6 +128,7 @@ function arrayRotate(arr){
     return arr[0].map((_, index) =>arr.map(row => row[index]).reverse());
 }
 
+let timeInterval = 1000;
 window.addEventListener("keydown", function name(event )  {
     if ("ArrowRight" === event.key && isMoveValid(gridRow, gridColumn + 1))  {
         gridColumn = gridColumn + 1 ;
@@ -153,9 +154,11 @@ function emptyNextGrid(){
         for(let y = 0; y < 20; y++){
             npc_c.fillStyle = "white";
             npc_c.fillRect(x*60+1, y*60+1, 58, 58)
-            }
         }
     }
+}
+
+var intervalId = setInterval(increaseTheRow, timeInterval);
 
 function increaseTheRow() {
     //totalGrid[i] = gridRow + gridColumn
@@ -163,10 +166,6 @@ function increaseTheRow() {
         gridRow = gridRow + 1;
         emptyGrid()
         drawPiece(piece)
-        if (gridRow > 19) {
-            gridRow = 0;
-        }
-        console.log("theRow:", gridRow);
     } else {
         for (let rowi = 0; rowi < piece.array.length; rowi++) {
             const row = piece.array[rowi];
@@ -182,11 +181,15 @@ function increaseTheRow() {
         gridRow = -1;
         piece = nextPiece
         nextPiece = getRandomPiece()
+        if (timeInterval > 300) {
+            timeInterval = timeInterval - 100;
+            clearInterval(intervalId);
+
+            intervalId = setInterval(increaseTheRow, timeInterval);
+        }
         emptyNextGrid()
         drawNextPiece()
     }
 }
-
 // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
 drawPiece(piece)
-const intervalId = setInterval(increaseTheRow, 1000);
