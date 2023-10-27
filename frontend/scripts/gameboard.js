@@ -1,4 +1,4 @@
-import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece, totalGrid } from "./pieces.js";
+import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece, getTotalGrid } from "./pieces.js";
 
 
 
@@ -30,9 +30,9 @@ function getRandomPiece() {
     return pieces[RandomNum]
 }
 
-let grid = totalGrid;
-let gridRow = 0;
-let gridColumn = 0;
+let grid = getTotalGrid();
+let gridRow = -1;
+let gridColumn = 3;
 let piece = getRandomPiece();
 
 function drawPiece(piece) {
@@ -66,11 +66,20 @@ function isMoveValid(newRow, newColumn) {
         const row = piece.array[rowi];
         for (let coli = 0; coli < row.length; coli++) {
             const element = row[coli];
-            if (element === 1 && newColumn + coli === 10 || element === 1 && newColumn + coli === -1) { // cheeky little or value instead of another if statement ;)
+            if (element === 1 && newColumn + coli === 10 ) { // cheeky little or value instead of another if statement ;)
+
+                    return false
+            }
+            if (element === 1 && newColumn + coli === -1) {
                 return false
             }
-            if (element == 1 && newRow + rowi == 20) {
+
+            // Collisions on moving down
+            if (element == 1 && (newRow + rowi === 20 )) {
                 return false
+            }
+            if (element === 1 && grid.array[newRow+rowi][newColumn + coli]) {
+                return false;
             }
         }   
     }
@@ -102,7 +111,8 @@ window.addEventListener("keydown", function name(event )  {
 
 function increaseTheRow() {
     //totalGrid[i] = gridRow + gridColumn
-    if (isMoveValid(gridRow + 1)){
+    console.log('increasing row')
+    if (isMoveValid(gridRow + 1, gridColumn)){
         gridRow = gridRow + 1;
         emptyGrid()
         drawPiece(piece)
@@ -118,12 +128,11 @@ function increaseTheRow() {
                 if (element === 1) {
                     //add to total grid in x,y position
                     grid.array[rowi + gridRow][coli + gridColumn]  = piece.color
-                    console.log(grid.array)
                 }
             }
         }
-        gridColumn = 0;
-        gridRow = 0;
+        gridColumn = 3;
+        gridRow = -1;
         piece = getRandomPiece()
     }
 }
