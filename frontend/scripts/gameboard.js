@@ -1,5 +1,7 @@
 import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece } from "./pieces.js";
 
+
+
 const c = document.getElementById("myCanvas");
 const ctx = c.getContext("2d");
 
@@ -50,8 +52,21 @@ function emptyGrid(){
     for(let x = 0; x < 10; x++ ){
         for(let y = 0; y < 20; y++){
             ctx.fillRect(x*60+1, y*60+1, 58, 58)
-        }    
+        }
     }
+}
+
+function isMoveValid(newColumn) {
+    for (let rowi = 0; rowi < piece.array.length; rowi++) {
+        const row = piece.array[rowi];
+        for (let coli = 0; coli < row.length; coli++) {
+            const element = row[coli];
+            if (element === 1 && newColumn + coli === 10 || element === 1 && newColumn + coli === -1) { // cheeky little or value instead of another if statement ;)
+                return false
+            }
+        }
+    }
+    return true
 }
 
 function arrayRotate(arr){
@@ -59,10 +74,10 @@ function arrayRotate(arr){
 }
 
 window.addEventListener("keydown", function name(event) {
-    if ("ArrowRight" === event.key )  {
+    if ("ArrowRight" === event.key && isMoveValid(gridColumn + 1))  {
         gridColumn = gridColumn + 1 ;
     }
-    if ("ArrowLeft" === event.key )  {
+    if ("ArrowLeft" === event.key  && isMoveValid(gridColumn - 1))  {
         gridColumn = gridColumn - 1 ;
     }
     if ("ArrowUp" === event.key ) {
