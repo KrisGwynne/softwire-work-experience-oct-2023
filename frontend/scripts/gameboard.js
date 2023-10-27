@@ -69,6 +69,10 @@ function drawNextPiece(){
     }
 }
 
+
+
+
+
 drawNextPiece()
 
 let grid = totalGrid;
@@ -133,7 +137,7 @@ window.addEventListener("keydown", function name(event )  {
         piece.array = arrayRotate(piece.array)
     }
 
-    if ("ArrowDown" === event.key ) {
+    if ("ArrowDown" === event.key  && isMoveValid(gridRow + 1, gridColumn )) {
         gridRow = gridRow + 1;
     }
     emptyGrid()
@@ -141,6 +145,19 @@ window.addEventListener("keydown", function name(event )  {
 })
 
 //rahul is a ledgend too
+
+function emptyNextGrid(){
+    for(let x = 0; x < 10; x++ ){
+        for(let y = 0; y < 20; y++){
+            npc_c.fillStyle = "white";
+            npc_c.fillRect(x*60+1, y*60+1, 58, 58)
+            if (grid.array[y][x] !== 0) {
+                npc_c.fillStyle = grid.array[y][x];
+                npc_c.fillRect(x*60+1, y*60+1, 58, 58)
+            }
+        }
+    }
+}
 
 function increaseTheRow() {
     //totalGrid[i] = gridRow + gridColumn
@@ -166,7 +183,10 @@ function increaseTheRow() {
         }
         gridColumn = 0;
         gridRow = 0;
-        piece = getRandomPiece()
+        piece = nextPiece
+        nextPiece = getRandomPiece()
+        emptyNextGrid()
+        drawNextPiece()
     }
 }
 
