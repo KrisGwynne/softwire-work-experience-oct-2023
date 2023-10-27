@@ -73,6 +73,7 @@ function arrayRotate(arr){
     return arr[0].map((_, index) =>arr.map(row => row[index]).reverse());
 }
 
+let timeInterval = 1000;
 window.addEventListener("keydown", function name(event) {
     if ("ArrowRight" === event.key && isMoveValid(gridColumn + 1))  {
         gridColumn = gridColumn + 1 ;
@@ -93,16 +94,21 @@ window.addEventListener("keydown", function name(event) {
 
 //rahul is a ledgend too
 
+var intervalId = setInterval(increaseTheRow, timeInterval);
+
 function increaseTheRow() {
     gridRow = gridRow + 1;
     emptyGrid()
     drawPiece(piece)
     if (gridRow > 19) {
+        timeInterval = timeInterval - 25;
+        clearInterval(intervalId);
+        
+        intervalId = setInterval(increaseTheRow, timeInterval);
         gridRow = 0;
+
     }
     console.log("theRow:", gridRow);
 }
-
 // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
 drawPiece(piece)
-const intervalId = setInterval(increaseTheRow, 1000);
