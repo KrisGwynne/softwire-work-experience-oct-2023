@@ -86,4 +86,4 @@ export const testPiece = {
 
 export const getTotalGrid = () =>  ({
     array: Array(20).fill(0).map(row => row = Array(10).fill(0))
-})
+});

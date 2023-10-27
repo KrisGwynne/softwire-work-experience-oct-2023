@@ -29,6 +29,47 @@ function getRandomPiece() {
     return pieces[RandomNum]
 }
 
+const npc = document.getElementById("nextPiece");
+const npc_c = npc.getContext("2d");
+
+for (let i = 0; i<6; i++){
+
+    let x = i*60
+
+
+
+    npc_c.moveTo(x, 0);
+    npc_c.lineTo(x, 700);
+    npc_c.stroke();
+}
+
+for (let i = 0; i<11; i++){
+    let y = i*60
+
+    npc_c.moveTo(0, y);
+    npc_c.lineTo(400, y);
+    npc_c.stroke();
+}
+
+let nextPiece = getRandomPiece();
+
+function drawNextPiece(){
+    npc_c.fillStyle=nextPiece.color
+    const array = nextPiece.array;
+    console.log(nextPiece.color)
+    for(const rowIndex in array){
+        const row = array[rowIndex]
+        for(const colIndex in row){
+            if(row[colIndex]=== 1){
+                npc_c.fillRect(Number(colIndex)*60+1, Number(rowIndex)*60+1, 58, 58)
+
+            }
+        }
+    }
+}
+
+drawNextPiece()
+
 let grid = getTotalGrid();
 let gridRow = -1;
 let gridColumn = 3;
@@ -66,32 +107,27 @@ function isMoveValid(newRow, newColumn) {
         for (let coli = 0; coli < row.length; coli++) {
             const element = row[coli];
             if (element === 1 && newColumn + coli === 10 ) { // cheeky little or value instead of another if statement ;)
-
-                    return false
+                return false
             }
             if (element === 1 && newColumn + coli === -1) {
                 return false
             }
-
-            // Collisions on moving down
-            if (element == 1 && (newRow + rowi === 20 )) {
+            if (element === 1 && newRow + rowi === 20) {
                 return false
             }
             if (element === 1 && grid.array[newRow+rowi][newColumn + coli]) {
                 return false;
             }
-        }   
+        }
     }
     return true
 }
-
-
-
 
 function arrayRotate(arr){
     return arr[0].map((_, index) =>arr.map(row => row[index]).reverse());
 }
 
+let timeInterval = 1000;
 window.addEventListener("keydown", function name(event )  {
     if ("ArrowRight" === event.key && isMoveValid(gridRow, gridColumn + 1))  {
         gridColumn = gridColumn + 1 ;
@@ -102,11 +138,45 @@ window.addEventListener("keydown", function name(event )  {
     if ("ArrowUp" === event.key ) {
         piece.array = arrayRotate(piece.array)
     }
+
+    if ("ArrowDown" === event.key  && isMoveValid(gridRow + 1, gridColumn )) {
+        gridRow = gridRow + 1;
+    }
     emptyGrid()
     drawPiece(piece)
 })
 
 //rahul is a ledgend too
+
+function emptyNextGrid(){
+    for(let x = 0; x < 10; x++ ){
+        for(let y = 0; y < 20; y++){
+            npc_c.fillStyle = "white";
+            npc_c.fillRect(x*60+1, y*60+1, 58, 58)
+        }
+    }
+}
+
+var intervalId = setInterval(increaseTheRow, timeInterval);
+
+function checkForCompleteRow() {
+    const fullRows = [];
+    console.log(fullRows)
+    for (let i = 0; i < grid.array.length; i++) {
+        const row = grid.array[i];
+        if (row.every((col) => col !== 0)) {
+            fullRows.push(i);
+        }
+    }
+    console.log(fullRows)
+
+    for (let i = 0; i < fullRows.length; i++) {
+        const fullRowIndex = fullRows[i];
+        grid.array.splice(fullRowIndex)
+        grid.array.unshift(Array(10).fill(0))
+
+    }
+}
 
 function increaseTheRow() {
     if (isMoveValid(gridRow + 1, gridColumn)){
@@ -125,23 +195,24 @@ function increaseTheRow() {
                 }
             }
         }
+        checkForCompleteRow()
         gridColumn = 3;
         gridRow = -1;
-        piece = getRandomPiece()
+        piece = nextPiece
+        nextPiece = getRandomPiece()
         if (!isMoveValid(gridRow+1, gridColumn)) {
             console.log('endgame')
             window.location.href = '../pages/GameOver.html'
         }
+        if (timeInterval > 300) {
+            timeInterval = timeInterval - 100;
+            clearInterval(intervalId);
+
+            intervalId = setInterval(increaseTheRow, timeInterval);
+        }
+        emptyNextGrid()
+        drawNextPiece()
     }
 }
-    
-
-//if piece in totalGrid 
-
 // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
 drawPiece(piece)
-
-const intervalId = setInterval(increaseTheRow, 1000);
-
-
-
