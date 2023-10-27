@@ -1,7 +1,6 @@
 import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece, getTotalGrid } from "./pieces.js";
 
 
-
 const c = document.getElementById("myCanvas");
 const ctx = c.getContext("2d");
 
@@ -175,16 +174,16 @@ function checkForCompleteRow() {
         const fullRowIndex = fullRows[i];
         grid.array.splice(fullRowIndex)
         grid.array.unshift(Array(10).fill(0))
-        
+
     }
 }
 
 function increaseTheRow() {
-    //totalGrid[i] = gridRow + gridColumn
     if (isMoveValid(gridRow + 1, gridColumn)){
         gridRow = gridRow + 1;
         emptyGrid()
         drawPiece(piece)
+        console.log("theRow:", gridRow);
     } else {
         for (let rowi = 0; rowi < piece.array.length; rowi++) {
             const row = piece.array[rowi];
@@ -201,6 +200,10 @@ function increaseTheRow() {
         gridRow = -1;
         piece = nextPiece
         nextPiece = getRandomPiece()
+        if (!isMoveValid(gridRow+1, gridColumn)) {
+            console.log('endgame')
+            window.location.href = '../pages/GameOver.html'
+        }
         if (timeInterval > 300) {
             timeInterval = timeInterval - 100;
             clearInterval(intervalId);
