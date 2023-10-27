@@ -1,7 +1,6 @@
 import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece, getTotalGrid } from "./pieces.js";
 
 
-
 const c = document.getElementById("myCanvas");
 const ctx = c.getContext("2d");
 
@@ -110,15 +109,10 @@ window.addEventListener("keydown", function name(event )  {
 //rahul is a ledgend too
 
 function increaseTheRow() {
-    //totalGrid[i] = gridRow + gridColumn
-    console.log('increasing row')
     if (isMoveValid(gridRow + 1, gridColumn)){
         gridRow = gridRow + 1;
         emptyGrid()
         drawPiece(piece)
-        if (gridRow > 19) {
-            gridRow = 0;
-        }
         console.log("theRow:", gridRow);
     } else {
         for (let rowi = 0; rowi < piece.array.length; rowi++) {
@@ -134,6 +128,10 @@ function increaseTheRow() {
         gridColumn = 3;
         gridRow = -1;
         piece = getRandomPiece()
+        if (!isMoveValid(gridRow+1, gridColumn)) {
+            console.log('endgame')
+            window.location.href = '../pages/GameOver.html'
+        }
     }
 }
     
@@ -143,4 +141,7 @@ function increaseTheRow() {
 // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
 drawPiece(piece)
 
-const intervalId = setInterval(increaseTheRow, 200);
+const intervalId = setInterval(increaseTheRow, 1000);
+
+
+
