@@ -6,7 +6,7 @@
 * [Useful Links](#useful-links)
   * [Project Resources](#project-resources)
   * [Useful HTML/CSS/JavaScript Guides](#useful-htmlcssjavascript-guides)
-* [Technical Overview](#technical-overview)
+* [Technical Overview](#technical-overview-)
   * [Frontend](#frontend)
   * [Backend](#backend)
 * [Running Locally](#running-locally)
@@ -16,6 +16,9 @@
   * [Initial Repository Setup](#initial-repository-setup)
   * [Working on a Feature](#working-on-a-feature)
   * [Requesting a Review](#requesting-a-review)
+* [Running Tetris After the Work Experience Week](#running-tetris-after-the-work-experience-week)
+  * [To Keep Working On Tetris Locally:](#to-keep-working-on-tetris-locally)
+  * [To Deploy Your Own Version Of Tetris:](#to-deploy-your-own-version-of-tetris)
 <!-- TOC -->
 
 ## Week Schedule
