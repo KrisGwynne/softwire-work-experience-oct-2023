@@ -30,6 +30,47 @@ function getRandomPiece() {
     return pieces[RandomNum]
 }
 
+const npc = document.getElementById("nextPiece");
+const npc_c = npc.getContext("2d");
+
+for (let i = 0; i<6; i++){
+
+    let x = i*60
+
+
+
+    npc_c.moveTo(x, 0);
+    npc_c.lineTo(x, 700);
+    npc_c.stroke();
+}
+
+for (let i = 0; i<11; i++){
+    let y = i*60
+
+    npc_c.moveTo(0, y);
+    npc_c.lineTo(400, y);
+    npc_c.stroke();
+}
+
+let nextPiece = getRandomPiece();
+
+function drawNextPiece(){
+    npc_c.fillStyle=nextPiece.color
+    const array = nextPiece.array;
+    console.log(nextPiece.color)
+    for(const rowIndex in array){
+        const row = array[rowIndex]
+        for(const colIndex in row){
+            if(row[colIndex]=== 1){
+                npc_c.fillRect(Number(colIndex)*60+1, Number(rowIndex)*60+1, 58, 58)
+
+            }
+        }
+    }
+}
+
+drawNextPiece()
+
 let grid = getTotalGrid();
 let gridRow = -1;
 let gridColumn = 3;
@@ -73,21 +114,16 @@ function isMoveValid(newRow, newColumn) {
             if (element === 1 && newColumn + coli === -1) {
                 return false
             }
-
-            // Collisions on moving down
-            if (element == 1 && (newRow + rowi === 20 )) {
+            if (element === 1 && newRow + rowi === 20) {
                 return false
             }
             if (element === 1 && grid.array[newRow+rowi][newColumn + coli]) {
                 return false;
             }
-        }   
+        }
     }
     return true
 }
-
-
-
 
 function arrayRotate(arr){
     return arr[0].map((_, index) =>arr.map(row => row[index]).reverse());
@@ -103,6 +139,10 @@ window.addEventListener("keydown", function name(event )  {
     if ("ArrowUp" === event.key ) {
         piece.array = arrayRotate(piece.array)
     }
+
+    if ("ArrowDown" === event.key ) {
+        gridRow = gridRow + 1;
+    }
     emptyGrid()
     drawPiece(piece)
 })
@@ -111,7 +151,6 @@ window.addEventListener("keydown", function name(event )  {
 
 function increaseTheRow() {
     //totalGrid[i] = gridRow + gridColumn
-    console.log('increasing row')
     if (isMoveValid(gridRow + 1, gridColumn)){
         gridRow = gridRow + 1;
         emptyGrid()
@@ -136,11 +175,7 @@ function increaseTheRow() {
         piece = getRandomPiece()
     }
 }
-    
-
-//if piece in totalGrid 
 
 // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
 drawPiece(piece)
-
-const intervalId = setInterval(increaseTheRow, 200);
+const intervalId = setInterval(increaseTheRow, 1000);
