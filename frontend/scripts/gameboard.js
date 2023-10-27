@@ -28,12 +28,54 @@ function getRandomPiece() {
     const pieces = [iPiece, jPiece, lPiece, oPiece, zPiece, tPiece, sPiece]
     const RandomNum = Math.floor(Math.random() * pieces.length)
     return pieces[RandomNum]
+    //console.log(pieces[RandomNum])
+     
 }
 
+const npc = document.getElementById("nextPiece");
+const npc_c = npc.getContext("2d");
+
+for (let i = 0; i<6; i++){
+   
+    let x = i*60
+    
+    
+       
+        npc_c.moveTo(x, 0);
+        npc_c.lineTo(x, 700);
+        npc_c.stroke();
+    }
+    
+for (let i = 0; i<11; i++){ 
+        let y = i*60
+    
+        npc_c.moveTo(0, y);
+        npc_c.lineTo(400, y);
+        npc_c.stroke();
+    }
+
+let nextPiece = getRandomPiece();
+
+function drawNextPiece(){
+    npc_c.fillStyle=nextPiece.color
+    const array = nextPiece.array;
+    console.log(nextPiece.color)
+    for(const rowIndex in array){
+        const row = array[rowIndex]
+        for(const colIndex in row){
+            if(row[colIndex]=== 1){
+                npc_c.fillRect(Number(colIndex)*60+1, Number(rowIndex)*60+1, 58, 58)
+
+            }
+        }
+    }
+}
+
+drawNextPiece()
+  
 let gridRow = 0;
 let gridColumn = 0;
 let piece = getRandomPiece();
-
 function drawPiece(piece) {
     ctx.fillStyle = piece.color
     const array = piece.array;
@@ -46,6 +88,7 @@ function drawPiece(piece) {
         }
     }
 }
+
 
 function emptyGrid(){
     ctx.fillStyle = "white";
