@@ -204,3 +204,32 @@ Once you are happy with your code, you can open GitHub in a browser and do the f
 - I will then review your changes and either make some comments or approve it:
     - If I make comments, you can make the changes on your branch locally and `git push` to update the code in GitHub
     - If I approve it, we can merge it into `main`. Wahey!
+
+## Running Tetris After the Work Experience Week
+
+### To Keep Working On Tetris Locally:
+
+First you will need to make sure you have the following installed (to run the app):
+* VSCode (or some other ide)
+* Nodejs (v18 is fine)
+* git (including git-bash)
+
+Next create your own repository:
+1. Fork the repository (click the "fork" button in the top right of the repository main page on Github)
+   * This will create your own GitHub repository with the same code as this one!
+2. Find the URL of your forked repository (on your repo's main page, click the green "Code" button and copy the https URL)
+3. On your computer, in a folder download the repository by running: `git clone <url-of-your-cloned-repo>`
+   * Navigate to the cloned repo using `cd <name-of-your-repo>`
+4. You should now have your own version of the code you can work on and push to.
+
+### To Deploy Your Own Version Of Tetris:
+
+1. Follow all the steps of the previous section to get your own version of Tetris in Github and locally.
+2. Set up a free Vercel account (link [here](https://vercel.com/signup)).
+3. Add a new project.
+4. Import your own forked version of the tetris repository into vercel
+5. Change the `Root Directory` to be `frontend` (to host the frontend)
+6. Click deploy to get your site up and running
+7. Once it is completed it will show a 'Congratulations' page - click on the continue to dashboard button
+8. You can visit your site by clicking on the link under where it says Domains
+9. When you push to the `main` branch on your Github repository, the website should now automatically deploy to your own Vercel app URL.
