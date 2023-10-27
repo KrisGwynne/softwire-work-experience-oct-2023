@@ -39,6 +39,9 @@ function drawRandomPiece() {
      
 }
 let theRow = 0;
+
+
+let timeInterval = 1000;
 // moves the block down every second
 function increaseTheRow() {
     theRow = theRow + 1;
@@ -50,8 +53,21 @@ function increaseTheRow() {
     console.log("theRow:", theRow);
   }
 
+
+
+
   // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
-const intervalId = setInterval(increaseTheRow, 1000);
+
+
+
+
+const intervalId = setInterval(increaseTheRow, timeInterval);
+
+
+
+
+
+
 
 let column = 0;
 let piece = drawRandomPiece();
@@ -71,7 +87,6 @@ function drawPiece(piece) {
     }
 
 }
-
 
 
 
@@ -101,14 +116,19 @@ window.addEventListener("keydown", function name(event) {
     }
     if ("ArrowLeft" === event.key )  {
         column = column - 1 ;
-        
+
         emptyGrid()
         drawPiece(piece)
-        
+
+    }
+    if ("ArrowDown" === event.key ) {
+        theRow = theRow + 1;
+
+        emptyGrid()
+        drawPiece(piece)
     }
 })
-
-
+// While holding the down arrow key, piece falls quicker
 
 //rahul is a ledgend too
 
