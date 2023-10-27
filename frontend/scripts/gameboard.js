@@ -1,4 +1,4 @@
-import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece } from "./pieces.js";
+import { iPiece, zPiece, jPiece, lPiece, oPiece, tPiece, sPiece, testPiece, totalGrid } from "./pieces.js";
 
 
 
@@ -30,6 +30,7 @@ function getRandomPiece() {
     return pieces[RandomNum]
 }
 
+let grid = totalGrid;
 let gridRow = 0;
 let gridColumn = 0;
 let piece = getRandomPiece();
@@ -48,15 +49,19 @@ function drawPiece(piece) {
 }
 
 function emptyGrid(){
-    ctx.fillStyle = "white";
     for(let x = 0; x < 10; x++ ){
         for(let y = 0; y < 20; y++){
+            ctx.fillStyle = "white";
             ctx.fillRect(x*60+1, y*60+1, 58, 58)
+            if (grid.array[y][x] !== 0) {
+                ctx.fillStyle = grid.array[y][x];
+                ctx.fillRect(x*60+1, y*60+1, 58, 58)
+            }
         }
     }
 }
 
-function isMoveValid(newColumn) {
+function isMoveValid(newRow, newColumn) {
     for (let rowi = 0; rowi < piece.array.length; rowi++) {
         const row = piece.array[rowi];
         for (let coli = 0; coli < row.length; coli++) {
@@ -64,20 +69,26 @@ function isMoveValid(newColumn) {
             if (element === 1 && newColumn + coli === 10 || element === 1 && newColumn + coli === -1) { // cheeky little or value instead of another if statement ;)
                 return false
             }
-        }
+            if (element == 1 && newRow + rowi == 20) {
+                return false
+            }
+        }   
     }
     return true
 }
+
+
+
 
 function arrayRotate(arr){
     return arr[0].map((_, index) =>arr.map(row => row[index]).reverse());
 }
 
-window.addEventListener("keydown", function name(event) {
-    if ("ArrowRight" === event.key && isMoveValid(gridColumn + 1))  {
+window.addEventListener("keydown", function name(event )  {
+    if ("ArrowRight" === event.key && isMoveValid(gridRow, gridColumn + 1))  {
         gridColumn = gridColumn + 1 ;
     }
-    if ("ArrowLeft" === event.key  && isMoveValid(gridColumn - 1))  {
+    if ("ArrowLeft" === event.key  && isMoveValid(gridRow, gridColumn - 1))  {
         gridColumn = gridColumn - 1 ;
     }
     if ("ArrowUp" === event.key ) {
@@ -90,15 +101,37 @@ window.addEventListener("keydown", function name(event) {
 //rahul is a ledgend too
 
 function increaseTheRow() {
-    gridRow = gridRow + 1;
-    emptyGrid()
-    drawPiece(piece)
-    if (gridRow > 19) {
+    //totalGrid[i] = gridRow + gridColumn
+    if (isMoveValid(gridRow + 1)){
+        gridRow = gridRow + 1;
+        emptyGrid()
+        drawPiece(piece)
+        if (gridRow > 19) {
+            gridRow = 0;
+        }
+        console.log("theRow:", gridRow);
+    } else {
+        for (let rowi = 0; rowi < piece.array.length; rowi++) {
+            const row = piece.array[rowi];
+            for (let coli = 0; coli < row.length; coli++) {
+                const element = row[coli];
+                if (element === 1) {
+                    //add to total grid in x,y position
+                    grid.array[rowi + gridRow][coli + gridColumn]  = piece.color
+                    console.log(grid.array)
+                }
+            }
+        }
+        gridColumn = 0;
         gridRow = 0;
+        piece = getRandomPiece()
     }
-    console.log("theRow:", gridRow);
 }
+    
+
+//if piece in totalGrid 
 
 // game the "1000" miliseconds to increase or decreate the time (1000 miliseconds is 1 second)
 drawPiece(piece)
-const intervalId = setInterval(increaseTheRow, 1000);
+
+const intervalId = setInterval(increaseTheRow, 200);
